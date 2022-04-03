@@ -6,13 +6,15 @@ import {
   // Navigate
 } from 'react-router-dom'
 
-import { Home } from './pages'
+import { Home, Menu, Room } from './pages'
 
 const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path='home' element={<Home />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/menu' element={<Menu />} />
+        <Route path='/room/:room' element={<Room />} />
       </Routes>
     </Router>
   )
