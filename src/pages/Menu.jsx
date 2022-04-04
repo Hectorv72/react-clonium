@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import SocketIO from '../utilities/SocketIO'
 import { useNavigate } from 'react-router-dom'
+import useSocket from '../hooks/useSocket'
 
 const Menu = () => {
+  const socket = useSocket()
   const navigate = useNavigate()
 
   const handleEmitMessageCreateRoom = () => {
-    SocketIO.emit('create-room', '')
+    socket.emit('create-room', '')
   }
 
   const handleNavigateToRoom = (room) => {
@@ -14,7 +15,7 @@ const Menu = () => {
   }
 
   const handleReceiveMessage = () => {
-    SocketIO.on('create-room', handleNavigateToRoom)
+    socket.on('create-room', handleNavigateToRoom)
   }
 
   useEffect(() => {
